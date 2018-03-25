@@ -1,0 +1,24 @@
+{
+  "name": "gridwars",
+  "version": "1.0.0",
+  "description": "mulitplayer grid wars",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "phaser": "^3.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasnegritto/Claremont888wDragon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasnegritto/Claremont888wDragon/issues"
+  },
+  "homepage": "https://github.com/lucasnegritto/Claremont888wDragon#readme"
+}
