@@ -1,0 +1,16 @@
+@charset "UTF-8";
+body {
+    font-family: 'Baloo Tamma';
+    background: yellow; }
+
+h1 {
+    text-align: center;
+    width: 100%;
+    margin: 0px auto;
+    color: orange;
+    font-size: 80px;
+    letter-spacing: 5px;
+    top: 50%;
+    position: absolute;
+    margin-top: -40px;
+    text-shadow: 3px 3px 0px black; }
