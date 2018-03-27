@@ -1,17 +1,20 @@
 body{
-  font-family: 'Baloo Tamma';
-  background: yellow;
+  font-family: 'Baloo Tamma', cursive;
+  background: yellow;
+  text-align: center;
+  width: 100%;
+  margin: 0px auto;
+  color: red;
+  font-size: 80px;
+  letter-spacing: 5px;
+  top: 50%;
+  position: absolute;
+  margin-top: -40px;
+  text-shadow: 6px 3px 3px black;
 }
-
-h1{
-  text-align: center;
-  width: 100%;
-  margin: 0px auto;
-  color: orange;
-  font-size: 80px;
-  letter-spacing: 5px;
-  top: 50%;
-  position: absolute;
-  margin-top: -40px;
-  text-shadow: 3px 3px 0px black;
+.menu {
+    margin: auto;
+    width: 100px;
+    padding: 10px;
+    display: inline-block;
 }
