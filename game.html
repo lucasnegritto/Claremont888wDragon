@@ -28,10 +28,12 @@
             type: Phaser.AUTO,
             width: 800,
             height: 600,
+            backgroundColor: '#ffdd99',
             scene: {
                 preload: preload,
                 create: create,
-                update: update
+                update: update,
+                render: render
             }
         };
 
@@ -39,19 +41,53 @@
 
         function preload ()
         {
-          this.load.image('squiggle1', 'assets/squiggle1.png');
-          this.load.image('squiggle2', 'assets/squiggle2.png');
+          this.load.image('person big', 'assets/person big.png');
+          this.load.image('person medium', 'assets/person medium.png');
+          this.load.image('person small', 'assets/person small.png');
+          this.load.image('building', 'assets/building.png');
         }
+
+        var cursors;
 
         function create() {
 
-          this.add.image(400, 300, 'squiggle1');
-          this.add.image(400, 300, 'squiggle2');
+          this.world.setBounds(0, 0, 2000, 2000);
+          this.add.image(400, 300, 'person big');
+          this.add.image(200, 300, 'person medium');
+          this.add.image(600, 300, 'person small');
+          this.add.image(600, 400, 'building');
+          cursors = game.input.keyboard.createCursorKeys();
 
         }
 
-        function update () {
+        function update() {
+
+            if (cursors.up.isDown)
+            {
+                game.camera.y -= 5;
+            }
+            else if (cursors.down.isDown)
+            {
+                game.camera.y += 5;
+            }
+
+            if (cursors.left.isDown)
+            {
+                game.camera.x -= 5;
+            }
+            else if (cursors.right.isDown)
+            {
+                game.camera.x += 5;
+            }
+
         }
+
+        function render() {
+
+            game.debug.cameraInfo(game.camera, 32, 32);
+
+        }
+
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
     </body>
