@@ -12,8 +12,8 @@ app.get('/', function(req, res){
   res.sendFile('home.html', {root: publicPath});
 });
 
-app.get('/contact', function(req, res){
-  res.sendFile('contact_us.html', {root: publicPath});
+app.get('/game', function(req, res){
+  res.sendFile('game.html', {root: publicPath});
 });
 
 http.listen(port, function(){
