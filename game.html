@@ -44,6 +44,7 @@
           this.load.image('person medium', 'assets/person medium.png');
           this.load.image('person small', 'assets/person small.png');
           this.load.image('building', 'assets/building.png');
+          this.load.image('grid', 'assets/grid.png');
         }
 
         function create ()
@@ -54,6 +55,7 @@
           this.add.image(200, 300, 'person medium');
           this.add.image(600, 300, 'person small');
           this.add.image(600, 400, 'building');
+          this.add.image(600, 400, 'grid');
 
             var cursors = this.input.keyboard.createCursorKeys();
 
@@ -92,21 +94,7 @@
             f1.add(help, 'line2');
             f1.open();
 
-            // Grid (the map!)
-            var group = this.add.group({
-              key: 'building',
-              frame: [ 0, 1, 2, 3, 4 ],
-              frameQuantity: 20
-            });
-
-            Phaser.Actions.GridAlign(group.getChildren(), {
-              width: 10,
-              height: 10,
-              cellWidth: 32,
-              cellHeight: 32,
-              x: 100,
-              y: 100
-            });
+        
         }
 
         function update (time, delta)
