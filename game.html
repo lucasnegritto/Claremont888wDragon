@@ -45,6 +45,7 @@
           this.load.image('person medium', 'assets/person medium.png');
           this.load.image('person small', 'assets/person small.png');
           this.load.image('building', 'assets/building.png');
+          this.load.image('scroll', 'assets/scroll.png');
         }
 
         function create ()
@@ -60,6 +61,7 @@
           this.add.image(200, 300, 'person medium');
           this.add.image(600, 300, 'person small');
           this.add.image(600, 400, 'building');
+          this.add.image(400, 300, 'scroll').setScrollFactor(0);
 
             var cursors = this.input.keyboard.createCursorKeys();
 
