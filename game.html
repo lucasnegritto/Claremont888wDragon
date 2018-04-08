@@ -1,113 +1,113 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="apple-touch-icon" href="icon.png">
-        <!-- Place favicon.ico in the root directory -->
-
-
-        <script src="js/dat.gui.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/phaser@3.3.0/dist/phaser.js"></script>
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
 
 
-
-    </head>
-    <body>
+        <script src="js/dat.gui.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/phaser@3.3.0/dist/phaser.js"></script>
 
 
 
-        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-        <script>
-        var config = {
-            type: Phaser.AUTO,
-            width: 800,
-            height: 600,
-            backgroundColor: '#ffdd99',
-            scene: {
-                preload: preload,
-                create: create,
-                update: update,
-            }
-        };
+    </head>
+    <body>
 
-        var game = new Phaser.Game(config);
 
-        function preload ()
-        {
-          this.load.image('grid', 'assets/grid.png');
-          this.load.image('person big', 'assets/person big.png');
-          this.load.image('person medium', 'assets/person medium.png');
-          this.load.image('person small', 'assets/person small.png');
-          this.load.image('building', 'assets/building.png');
-          this.load.image('grid', 'assets/grid.png');
-        }
 
-        function create ()
-        {
-          for (var i = 0; i < 10; i++) {
-            for (var j = 0; j < 10; j++) {
-                this.add.image(1000*i, 1000*j, 'grid').setOrigin(0, 0);
-            }
-          }
-          //  Set the camera bounds to be the size of the image 
-          this.cameras.main.setBounds(0, 0, 10000, 10000);
-          this.add.image(400, 300, 'person big');
-          this.add.image(200, 300, 'person medium');
-          this.add.image(600, 300, 'person small');
-          this.add.image(600, 400, 'building');
-          this.add.image(600, 400, 'grid');
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+        var config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            backgroundColor: '#ffdd99',
+            scene: {
+                preload: preload,
+                create: create,
+                update: update,
+            }
+        };
 
-            var cursors = this.input.keyboard.createCursorKeys();
+        var game = new Phaser.Game(config);
 
-            var controlConfig = {
-                camera: this.cameras.main,
-                left: cursors.left,
-                right: cursors.right,
-                up: cursors.up,
-                down: cursors.down,
-                zoomIn: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
-                zoomOut: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
-                acceleration: 0.5,
-                drag: 0.01,
-                maxSpeed: 10
-            };
+        function preload ()
+        {
+          this.load.image('grid', 'assets/grid.png');
+          this.load.image('person big', 'assets/person big.png');
+          this.load.image('person medium', 'assets/person medium.png');
+          this.load.image('person small', 'assets/person small.png');
+          this.load.image('building', 'assets/building.png');
+          this.load.image('scroll', 'assets/scroll.png');
+        }
 
-            controls = new Phaser.Cameras.Controls.Smoothed(controlConfig);
+        function create ()
+        {
+          for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < 10; j++) {
+                this.add.image(1000*i, 1000*j, 'grid').setOrigin(0, 0);
+            }
+          }
+          //  Set the camera bounds to be the size of the image
+          this.cameras.main.setBounds(0, 0, 10000, 10000);
+          this.add.image(400, 300, 'person big');
+          this.add.image(200, 300, 'person medium');
+          this.add.image(600, 300, 'person small');
+          this.add.image(600, 400, 'building');
+          this.add.image(400, 300, 'scroll').setScrollFactor(0);
 
-            var cam = this.cameras.main;
+            var cursors = this.input.keyboard.createCursorKeys();
 
-            gui = new dat.GUI();
+            var controlConfig = {
+                camera: this.cameras.main,
+                left: cursors.left,
+                right: cursors.right,
+                up: cursors.up,
+                down: cursors.down,
+                zoomIn: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
+                zoomOut: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
+                acceleration: 0.5,
+                drag: 0.01,
+                maxSpeed: 10
+            };
 
-            var help = {
-                line1: 'Cursors to move',
-                line2: 'Q & E to zoom'
-            }
+            controls = new Phaser.Cameras.Controls.Smoothed(controlConfig);
 
-            var f1 = gui.addFolder('Camera');
-            f1.add(cam, 'x').listen();
-            f1.add(cam, 'y').listen();
-            f1.add(cam, 'scrollX').listen();
-            f1.add(cam, 'scrollY').listen();
-            f1.add(cam, 'rotation').min(0).step(0.01).listen();
-            f1.add(cam, 'zoom', 0.1, 2).step(0.1).listen();
-            f1.add(help, 'line1');
-            f1.add(help, 'line2');
-            f1.open();
+            var cam = this.cameras.main;
 
-        }
+            gui = new dat.GUI();
 
-        function update (time, delta)
-        {
-            controls.update(delta);
-        }
+            var help = {
+                line1: 'Cursors to move',
+                line2: 'Q & E to zoom'
+            }
 
-        </script>
-        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-    </body>
+            var f1 = gui.addFolder('Camera');
+            f1.add(cam, 'x').listen();
+            f1.add(cam, 'y').listen();
+            f1.add(cam, 'scrollX').listen();
+            f1.add(cam, 'scrollY').listen();
+            f1.add(cam, 'rotation').min(0).step(0.01).listen();
+            f1.add(cam, 'zoom', 0.1, 2).step(0.1).listen();
+            f1.add(help, 'line1');
+            f1.add(help, 'line2');
+            f1.open();
+
+        }
+
+        function update (time, delta)
+        {
+            controls.update(delta);
+        }
+
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
 </html>
